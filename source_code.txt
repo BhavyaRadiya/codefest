@@ -1,0 +1,25 @@
+def serverloader(l, ln):
+    for i in range(ln):
+        for j in range(i + 1, ln - 1):
+            if l[i][0] > l[j][0]:
+                l[i], l[j] = l[j], l[i]
+
+            elif l[i][0] == l[j][0] and l[j][1] > l[i][1]:
+                l[i], l[j] = l[j], l[i]
+
+            elif l[i][0] == l[j][0] and l[i][1] == l[j][1] and l[j][2] > l[i][2]:
+                l[i], l[j] = l[j], l[i]
+    return l
+f = open("TWSP_small.txt",'r')
+lines = f.readlines()
+ls = []
+for line in lines:
+   ls.append(line.split())
+for i in range(len(ls)):
+  ls[i][0] = int(ls[i][0])
+  ls[i][1] = int(ls[i][1])
+  ls[i][2] = int(ls[i][2])
+
+length = len(ls)
+final = serverloader(ls, length)
+print(final)
